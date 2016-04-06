@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  root to: 'visitors#index'
+
+  root to: 'docs#new'
+
+  resource :docs, only: [:new]
+
 end

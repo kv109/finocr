@@ -1,0 +1,10 @@
+.row
+  .col-lg-12
+    h1.page-header
+      | Document Scanner
+.row
+  .col-lg-6.col-lg-offset-5
+    = form_tag do |f|
+      span.btn.btn-default.btn-file.btn-primary
+        | Choose document
+        = file_field_tag :file
