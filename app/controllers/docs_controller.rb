@@ -4,9 +4,8 @@ class DocsController < ApplicationController
   end
 
   def create
-    pdf_data = PdfData.new(params[:file].tempfile)
-
-    render plain: pdf_data.pages.first.text
+    @pdf_data = PdfData.new(params[:file].tempfile)
+    render :show
   end
 
 end
