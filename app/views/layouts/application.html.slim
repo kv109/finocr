@@ -15,9 +15,8 @@ html
     header
       = render 'layouts/navigation'
       = render 'layouts/messages'
-      .col-lg-12.col-xs-12
-        .container
-          = yield
-      = render 'layouts/footer'
+    .container
+      = yield
+    = render 'layouts/footer'
 
     = yield :script
