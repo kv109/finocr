@@ -27,6 +27,7 @@ describe MoneyNumberFinder do
         test_match 'abc $123,456.78', [[4, 14, '$123,456.78']]
         test_match '$123,456.78 abc', [[0, 10, '$123,456.78']]
         test_match 'abc $123,456.78 abc', [[4, 14, '$123,456.78']]
+        test_match '$100,000,000,000', [[0, 15, '$100,000,000,000']]
       end
     end
 

@@ -5,9 +5,9 @@
     .col-lg-6
       .original-page
         .text
-          = page.text
+          = page.html_with_highlighted_matches
     .col-lg-6
       .extracted-page
-        - page.money_numbers.each do |money_number_match|
+        - page.money_number_finder.to_h.fetch(:matches).each do |hash|
           .text
-            = money_number_match.to_s
+            = hash.fetch(:matched_string)
