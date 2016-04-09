@@ -4,14 +4,9 @@ class DocsController < ApplicationController
   end
 
   def create
-    reader = PDF::Reader.new(params[:file].tempfile)
+    pdf_data = PdfData.new(params[:file].tempfile)
 
-    pages = []
-    reader.pages.each do |page|
-      pages << page.text
-    end
-
-    render plain: pages.first
+    render plain: pdf_data.pages.first.text
   end
 
 end
