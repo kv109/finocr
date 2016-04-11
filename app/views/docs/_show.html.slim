@@ -1,13 +1,18 @@
+- content_for :script do
+  = javascript_include_tag 'pages/docs/_show'
+
 - pdf_data.pages.each do |page|
-  .row
-    h4 Page ##{page.number}
-  .row
-    .col-lg-6
-      .original-page
-        .text
-          = page.html_with_highlighted_matches
-    .col-lg-6
-      .extracted-page
-        - page.money_number_finder.to_h.fetch(:matches).each do |hash|
+  .page data-page="true"
+    .row
+      .col-lg-2
+        h3 Page ##{page.number}
+    .row
+      .col-lg-6
+        .original-page
           .text
-            = hash.fetch(:matched_string)
+            = page.html_with_highlighted_matches
+      .col-lg-6
+        .extracted-page
+          - page.money_number_finder.to_h.fetch(:matches).each do |hash|
+            span.match data-match-id=hash.fetch(:id)
+              = hash.fetch(:matched_string)

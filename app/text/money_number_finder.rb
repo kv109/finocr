@@ -9,10 +9,15 @@ class MoneyNumberFinder < Struct.new(:text)
 
   def to_h
     hash           = {}
+    i = -1
     hash[:matches] = matches.map do |match|
+      i += 1
+      start  = match.begin(0)
+      stop   = match.end(0) - 1
       {
-        begin:          match.begin(0),
-        end:            match.end(0) - 1,
+        id:             i,
+        begin:          start,
+        end:            stop,
         matched_string: match[0]
       }
     end
